@@ -33,3 +33,11 @@ func TestGeneratorUser_BuildUser(t *testing.T) {
 		t.Error("Expected info", data, "Got", user)
 	}
 }
+
+func Benchmark(b *testing.B) {
+	data := get_map()
+	for i := 0; i < b.N; i++ {
+		generator := &GeneratorUser{}
+		generator.BuildUser(builders.BuilderUser{}, data)
+	}
+}
